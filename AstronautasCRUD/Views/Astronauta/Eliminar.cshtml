@@ -1,0 +1,42 @@
+﻿@model AstronautaModel
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<h1>Eliminar</h1>
+
+
+<div class="card">
+    <div class="card-header">
+        Eliminar Astronauta
+    </div>
+    <div class="card-body">
+        <div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+            <img src="data:image/jpg; base64, @Html.DisplayFor(m => m.Foto)" style="object-fit: cover; min-height: 100%; min-width: 100%" class="img-fluid rounded-start" alt="@Html.DisplayFor(m => m.Nombre)">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">@Html.DisplayTextFor(m => m.Nombre)</h5>
+        
+        <p class="card-text">
+            <ul><li>@Html.DisplayTextFor(m => m.DetallesMisiones)</li></ul>
+        </p>
+
+       
+      </div>
+    </div>
+  </div>
+</div>
+        <form asp-action="Eliminar" asp-controller="Astronauta" method="post">
+            
+        <input asp-for="IdAstronauta" type="hidden" class="form-control">
+            <div class="alert alert-danger" role="alert">
+            ¿Estas seguro de Eliminar a <b>@Html.DisplayFor(m => m.Nombre)</b> de tu lista?
+            </div>
+            <a class="btn btn-primary" asp-action="Listar">Cancelar</a> |
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+    </div>
+</div>

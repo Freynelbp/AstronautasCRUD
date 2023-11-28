@@ -1,0 +1,69 @@
+﻿@model AstronautaModel
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>Editar</h1>
+
+<div class="card">
+    <div class="card-header">
+        Editar <b> @Html.DisplayFor(m => m.Nombre) </b>
+    </div>
+    <div class="card-body">
+        
+        <form enctype="multipart/form-data" asp-action="Editar" asp-controller="Astronauta" method="post">
+            
+        <input asp-for="IdAstronauta" type="hidden" class="form-control">
+
+           <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input asp-for="Nombre" type="text" class="form-control" placeholder="Nombre">
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nacionalidad</label>
+                <input asp-for="Nacionalidad" type="text" class="form-control" placeholder="Nacionalidad">
+                <span asp-validation-for="Nacionalidad" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Descripcion </label>
+                <input asp-for="Descripcion" type="text" class="form-control" placeholder="Descripcion">
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha de Nacimiento </label>
+                <input asp-for="FechaNacimiento" type="date" class="form-control">
+                <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha de Fellecimiento (En caso contrario, dejar vacio)</label>
+                <input asp-for="FechaFallecimiento" type="date" class="form-control">
+                <span asp-validation-for="FechaFallecimiento" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Redes Sociales </label>
+                <input asp-for="RedesSociales" type="text" class="form-control" placeholder="Redes Sociales">
+                <span asp-validation-for="RedesSociales" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Detalles Misiones </label>
+                <input asp-for="DetallesMisiones" type="text" class="form-control" placeholder="Detalles de la Mision">
+                <span asp-validation-for="DetallesMisiones" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Adjuntar Imagen (.jpg) </label>
+                <input asp-for="File" type="file" class="form-control" accept="image/jpeg">
+                <span asp-validation-for="File" class="text-danger"></span>
+            </div>
+           
+            <div class="mb-3">
+             <label class="form-label">Sigue Activo </label> <br />
+                <label class="form-label">Si <input asp-for="Activo" type="radio" value="true"></label>
+                <label class="form-label">No <input asp-for="Activo" type="radio" value="false"></label>
+            </div>
+            <a class="btn btn-danger" asp-action="Listar">Cancelar</a> |
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+        
+    </div>
+</div>

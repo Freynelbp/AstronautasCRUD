@@ -1,0 +1,90 @@
+﻿
+@model List<AstronautaModel>
+
+
+@{
+    ViewData["Title"] = "Listar";
+}
+
+<h1>Lista de Astronautas</h1>
+  <nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="btn btn-success" asp-action="Crear"><i class="bi bi-plus-circle"></i> Añadir Nuevo</a>
+    <form class="d-flex" asp-action="Listar" asp-controller="Astronauta">
+        
+        <input class="navbar-brand" type="radio" id="radio" name="activo" value="todos" checked >
+        <label class="navbar-brand">Todos</label>
+       
+                                                                        
+        <input class="navbar-brand" type="radio" id="radio" name="activo" value="activo" >
+        <label class="navbar-brand">Activo</label>
+
+                                                                        
+        <input class="navbar-brand" type="radio" id="radio" name="activo" value="inactivo" >
+        <label class="navbar-brand">Inactivo</label>
+
+
+        <input class="form-control me-2" type="text" id="nacionalidad" placeholder="Nacionalidad" name="nacionalidad">
+
+
+        <input class="btn btn-outline-success" value="Buscar" type="submit"/>
+        
+    </form>
+  </div>
+ </nav>
+
+
+<hr />
+
+
+
+@foreach (var item in Model) {
+<div class="card mb-3" style="width: 100%;">
+  <div class="row g-0">
+   <div class="col-md-4">
+        <img src="data:image/jpg; base64, @item.Foto" style="object-fit: cover; min-height: 100%; min-width: 100%; max-height: 400px" class="img-fluid rounded-start" alt="Foto de @item.Nombre">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">@item.Nombre <a class="btn btn-outline-danger float-end" asp-action="Eliminar" asp-controller="Astronauta"  asp-route-IdAstronauta="@item.IdAstronauta"><i class="bi bi-trash3"></i></a><a class="btn btn-outline-primary float-end" asp-action="Editar" asp-controller="Astronauta" asp-route-IdAstronauta="@item.IdAstronauta"><i class="bi bi-pencil-square"></i> </a>  </h5>
+        
+        <p>
+            <b>Nacionalidad: </b>@item.Nacionalidad <br>
+            <b>Fecha de Nacimiento: </b>@item.FechaNacimiento?.ToString("dd/MM/yyyy") <br>
+                        @{
+                            
+                            if(item.FechaFallecimiento != null)
+                            {
+                                <b>Fecha de Fallecimiento: </b>@item.FechaFallecimiento?.ToString("dd/MM/yyyy") <br>
+                            }
+
+                            else
+                            {
+                                <b>Fecha de Fallecimiento: </b> <span>Actualidad</span> <br>
+                            }
+                            
+
+                           
+
+                        }
+            <b>Edad: </b>@item.Edad años<br>
+            <b>Redes Sociales: </b>@item.RedesSociales <br>
+            @if(item.Activo)
+            {
+                <b>Activo: </b><span class="badge bg-success">Si</span>
+            }
+            else
+            {
+                <b>Activo: </b><span class="badge bg-danger">No</span>
+            }
+            <br>
+        <b class="card-text">Descripcion: </b>@item.Descripcion <br>
+        </p>
+        <a asp-action="Detalles" asp-controller="Astronauta" class="btn btn-secondary" asp-route-IdAstronauta="@item.IdAstronauta"><i class="bi bi-info-circle"></i> Conocer mas</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+}

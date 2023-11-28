@@ -1,0 +1,29 @@
+﻿@model AstronautaModel
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h2>Conocer Mas <i class="bi bi-info-circle"></i></h2>
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="card-header">
+      <b>  @Html.DisplayTextFor(m => m.Nombre) </b>
+    </div>
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="data:image/jpg; base64, @Html.DisplayFor(m => m.Foto)" style="object-fit: cover; min-height: 100%; min-width: 100%" class="img-fluid rounded-start" alt="@Html.DisplayFor(m => m.Nombre)">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Mision Espacial en la que Participó</h5>
+        <p class="card-text">
+            <ul><li>@Html.DisplayTextFor(m => m.DetallesMisiones)</li></ul>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <a class="btn btn-danger" asp-action="Listar">Volver</a> | 
+    <a class="btn btn-primary" asp-action="Editar" asp-route-IdAstronauta="@Html.DisplayTextFor(m => m.IdAstronauta)">Editar</a>
+  </div>
+</div>
