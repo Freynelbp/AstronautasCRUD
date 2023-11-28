@@ -90,3 +90,13 @@ begin
 end
 
 
+--Paso 8--
+create procedure sp_Eliminar(
+@IdAstronauta int
+)
+as
+begin
+ delete from Astronautas where IdAstronauta = @IdAstronauta
+end
+
+
