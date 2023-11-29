@@ -13,7 +13,7 @@ create table Astronautas(
 	IdAstronauta int identity(1,1) primary key,
 	Foto varchar(max),
 	Nombre varchar(60), 
-	Nacionalidad varchar(50) default ,
+	Nacionalidad varchar(50),
 	Descripcion varchar(500),
 	FechaNacimiento Date,
 	FechaFallecimiento Date,
